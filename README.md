@@ -10,24 +10,28 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 ## ✨ Features
 
 ### 🤖 Intelligent Timetable Generation
+
 - **AI-Powered Algorithms**: Advanced constraint satisfaction algorithms
 - **Multi-Strategy Generation**: Optimal, balanced, and flexible scheduling strategies
 - **Conflict Resolution**: Automatic detection and resolution of scheduling conflicts
 - **Resource Optimization**: Smart allocation of classrooms and faculty
 
 ### 📊 Comprehensive Management
+
 - **Faculty Management**: Complete faculty profiles with availability tracking
 - **Classroom Management**: Room capacity and equipment tracking
 - **Subject Configuration**: Flexible subject setup with duration and frequency control
 - **Advanced Configuration**: Customizable time slots, lunch breaks, and batch settings
 
 ### 📈 Analytics & Reporting
+
 - **Performance Metrics**: Efficiency scores, utilization rates, and conflict analysis
 - **PDF Export**: Professional timetable PDFs with comprehensive layouts
 - **Data Persistence**: Local storage for approved timetables and configurations
 - **Dashboard Analytics**: Real-time insights and upcoming events
 
 ### 🎨 Modern User Interface
+
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
 - **Clean UI/UX**: Built with shadcn/ui components and Tailwind CSS
 - **Dark/Light Themes**: Customizable appearance settings
@@ -36,6 +40,7 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18.x or later
 - npm or yarn package manager
 - Modern web browser
@@ -43,17 +48,20 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/smart-classroom-timetable-scheduler.git
    cd smart-classroom-timetable-scheduler
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
@@ -72,6 +80,7 @@ The built files will be available in the `dist` directory.
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **React 18.3.1** - Modern UI library with hooks
 - **TypeScript** - Type-safe JavaScript development
 - **Vite** - Fast build tool and development server
@@ -79,6 +88,7 @@ The built files will be available in the `dist` directory.
 - **shadcn/ui** - High-quality React components
 
 ### Libraries & Tools
+
 - **React Router** - Client-side routing
 - **jsPDF** - PDF generation capabilities
 - **Lucide React** - Beautiful SVG icons
@@ -86,6 +96,7 @@ The built files will be available in the `dist` directory.
 - **Sonner** - Toast notifications
 
 ### Development Tools
+
 - **ESLint** - Code linting and quality
 - **TypeScript** - Static type checking
 - **PostCSS** - CSS processing
@@ -117,6 +128,7 @@ src/
 ## 🎯 Core Algorithms
 
 ### Constraint Satisfaction Problem (CSP)
+
 The timetable generator uses advanced CSP techniques to solve complex scheduling problems:
 
 - **Variable Assignment**: Time slots, rooms, and faculty assignments
@@ -133,17 +145,21 @@ The timetable generator uses advanced CSP techniques to solve complex scheduling
 ## 📸 Screenshots
 
 ### Dashboard
+
 ![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Preview)
 
 ### Timetable Generation
+
 ![Timetable Generation](https://via.placeholder.com/800x400?text=Timetable+Generation)
 
 ### Results View
+
 ![Results](https://via.placeholder.com/800x400?text=Results+View)
 
 ## 🔧 Configuration
 
 ### Environment Variables
+
 Create a `.env` file in the root directory:
 
 ```env
@@ -152,6 +168,7 @@ VITE_API_BASE_URL="http://localhost:3000"
 ```
 
 ### Advanced Configuration
+
 The application supports various configuration options:
 
 - **Time Slots**: Customizable start/end times
@@ -171,6 +188,7 @@ We welcome contributions! Please follow these steps:
 5. Open a Pull Request
 
 ### Development Guidelines
+
 - Follow TypeScript best practices
 - Use conventional commit messages
 - Add tests for new features
@@ -208,4 +226,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ by [Your Name](https://github.com/yourusername)**
 
-*Making timetable management intelligent and efficient!*
+_Making timetable management intelligent and efficient!_
