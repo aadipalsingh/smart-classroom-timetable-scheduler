@@ -5,8 +5,6 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Set base path for GitHub Pages (replace 'repository-name' with your actual repo name)
-  base: mode === 'production' ? '/smart-classroom-timetable-scheduler/' : '/',
   server: {
     host: "::",
     port: 8080,
