@@ -62,7 +62,7 @@ const LandingPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link to="/signup">
               <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 px-8 py-3 text-lg">
-                Try For Free <ArrowRight className="ml-2 w-5 h-5" />
+                Try It <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Button size="lg" variant="outline" className="px-8 py-3 text-lg border-primary/20 hover:bg-primary/5">
@@ -200,7 +200,7 @@ const LandingPage = () => {
 
               <Link to="/signup">
                 <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                  Start Free Trial
+                  Start
                 </Button>
               </Link>
             </div>

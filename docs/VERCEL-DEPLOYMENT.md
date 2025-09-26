@@ -120,16 +120,18 @@ After deployment:
 If you're getting a 404 error, try these fixes:
 
 ### Fix 1: Manual Build Settings Override
+
 In Vercel dashboard, go to **Settings → General → Build & Output Settings** and override:
 
 ```bash
 Build Command: npm run build
-Install Command: npm run install-client  
+Install Command: npm run install-client
 Output Directory: client/dist
 Root Directory: ./
 ```
 
 ### Fix 2: Alternative Vercel Configuration
+
 If the above doesn't work, try updating your `vercel.json`:
 
 ```json
@@ -145,6 +147,7 @@ If the above doesn't work, try updating your `vercel.json`:
 ```
 
 ### Fix 3: Check Build Logs
+
 1. Go to your Vercel project dashboard
 2. Click on the failed deployment
 3. Check the build logs for specific errors
