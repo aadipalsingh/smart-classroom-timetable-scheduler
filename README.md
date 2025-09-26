@@ -1,4 +1,4 @@
-# 🎓 Smart Classroom and Timetable Scheduler
+# 🎓 TimeNest - Smart Classroom and Timetable Scheduler
 
 A modern, AI-powered timetable generation system built with React, TypeScript, and advanced scheduling algorithms. This application helps educational institutions create optimized schedules while managing faculty, classrooms, and academic resources efficiently.
 
@@ -19,7 +19,7 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 ### 📊 Comprehensive Management
 
 - **Faculty Management**: Complete faculty profiles with availability tracking
-- **Classroom Management**: Room capacity and equipment tracking
+- **Classroom Management**: Room capacity and equipment tracking with full CRUD operations
 - **Subject Configuration**: Flexible subject setup with duration and frequency control
 - **Advanced Configuration**: Customizable time slots, lunch breaks, and batch settings
 
@@ -34,8 +34,8 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
 - **Clean UI/UX**: Built with shadcn/ui components and Tailwind CSS
-- **Dark/Light Themes**: Customizable appearance settings
-- **Interactive Elements**: Drag-and-drop functionality and real-time updates
+- **Purple Gradient Theme**: Consistent TimeNest branding throughout
+- **Interactive Elements**: Full featured landing page and authentication flow
 
 ## 🚀 Quick Start
 
@@ -50,32 +50,36 @@ A modern, AI-powered timetable generation system built with React, TypeScript, a
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/smart-classroom-timetable-scheduler.git
+   git clone https://github.com/aadipalsingh/smart-classroom-timetable-scheduler.git
    cd smart-classroom-timetable-scheduler
    ```
 
-2. **Install dependencies**
+2. **Navigate to client directory**
+
+   ```bash
+   cd client
+   ```
+
+3. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-3. **Start development server**
+4. **Start development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application
+5. **Open your browser**
+   Navigate to `http://localhost:8080` (or the port shown in terminal) to view the application
 
 ### Build for Production
 
 ```bash
 npm run build
 ```
-
-The built files will be available in the `dist` directory.
 
 ## 🛠️ Technology Stack
 
@@ -95,87 +99,80 @@ The built files will be available in the `dist` directory.
 - **React Hook Form** - Form validation and handling
 - **Sonner** - Toast notifications
 
-### Development Tools
-
-- **ESLint** - Code linting and quality
-- **TypeScript** - Static type checking
-- **PostCSS** - CSS processing
-- **Vite** - Lightning-fast HMR
-
 ## 📁 Project Structure
 
 ```
-src/
-├── components/          # Reusable UI components
-│   ├── ui/             # shadcn/ui components
-│   ├── AppSidebar.tsx  # Navigation sidebar
-│   └── TopNavbar.tsx   # Header navigation
-├── pages/              # Main application pages
-│   ├── Dashboard.tsx   # Analytics dashboard
-│   ├── CreateTimetable.tsx  # Timetable generation
-│   ├── TimetableResults.tsx # Generated results
-│   ├── Faculties.tsx   # Faculty management
-│   └── Classrooms.tsx  # Classroom management
-├── services/           # Business logic services
-│   ├── timetableGenerator.ts  # AI scheduling algorithms
-│   └── pdfService.ts   # PDF generation service
-├── data/              # Mock data and configurations
-├── hooks/             # Custom React hooks
-├── lib/               # Utility functions
-└── types/             # TypeScript type definitions
+smart-classroom-timetable-scheduler/
+├── client/                          # Frontend React application
+│   ├── src/
+│   │   ├── app/                    # App routing and layout
+│   │   ├── features/               # Feature-based modules
+│   │   │   ├── auth/              # Authentication (Login/SignUp)
+│   │   │   ├── dashboard/         # Analytics dashboard
+│   │   │   ├── classrooms/        # Classroom management (CRUD)
+│   │   │   ├── faculty/           # Faculty management
+│   │   │   ├── timetable/         # Timetable generation
+│   │   │   ├── landing/           # Landing page
+│   │   │   └── settings/          # Application settings
+│   │   ├── shared/                # Shared components and utilities
+│   │   │   ├── components/        # Reusable UI components
+│   │   │   │   ├── ui/           # shadcn/ui components
+│   │   │   │   └── Logo.tsx      # TimeNest logo component
+│   │   │   ├── hooks/            # Custom React hooks
+│   │   │   ├── lib/              # Utility functions
+│   │   │   ├── contexts/         # React contexts
+│   │   │   └── services/         # Business logic services
+│   │   └── data/                 # Mock data and configurations
+│   ├── package.json
+│   └── vite.config.ts
+├── server/                        # Backend API (structure ready)
+│   ├── package.json
+│   └── README.md
+├── docs/                         # Documentation
+│   ├── NEW-STRUCTURE-README.md
+│   ├── QUICK-START.md
+│   └── README.md
+└── scripts/                      # Utility scripts
+    ├── build-prod.sh
+    ├── dev-setup.sh
+    └── update-imports.sh
 ```
 
-## 🎯 Core Algorithms
+## 🎯 Key Features Implemented
 
-### Constraint Satisfaction Problem (CSP)
+### Authentication System
 
-The timetable generator uses advanced CSP techniques to solve complex scheduling problems:
+- Professional login/signup pages with split-screen design
+- Purple gradient theme consistent with TimeNest branding
+- Demo credentials for quick testing
+- Form validation and toast notifications
 
-- **Variable Assignment**: Time slots, rooms, and faculty assignments
-- **Constraint Checking**: Hard constraints (conflicts) and soft constraints (preferences)
-- **Backtracking Algorithm**: Intelligent search with conflict resolution
-- **Optimization Strategies**: Multiple generation strategies for different use cases
+### Classroom Management (Full CRUD)
 
-### Scheduling Strategies
+- ✅ **Add Classroom**: Complete form with validation
+- ✅ **Edit Classroom**: Update existing classroom details
+- ✅ **Delete Classroom**: Safe deletion with confirmation
+- ✅ **View/Search**: Grid view with search and filtering
+- Equipment management with dynamic add/remove
+- Status tracking (Available/Occupied/Maintenance)
 
-1. **Optimal Strategy**: Maximum efficiency with minimal conflicts
-2. **Balanced Strategy**: Even distribution of workload
-3. **Flexible Strategy**: Adaptable scheduling with preference consideration
+### Landing Page
 
-## 📸 Screenshots
-
-### Dashboard
-
-![Dashboard](https://via.placeholder.com/800x400?text=Dashboard+Preview)
-
-### Timetable Generation
-
-![Timetable Generation](https://via.placeholder.com/800x400?text=Timetable+Generation)
-
-### Results View
-
-![Results](https://via.placeholder.com/800x400?text=Results+View)
+- Professional marketing page with hero section
+- Features showcase and testimonials
+- Smooth navigation to authentication
+- Responsive design with consistent branding
 
 ## 🔧 Configuration
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the client directory:
 
 ```env
 VITE_APP_NAME="TimeNest"
 VITE_API_BASE_URL="http://localhost:3000"
 ```
-
-### Advanced Configuration
-
-The application supports various configuration options:
-
-- **Time Slots**: Customizable start/end times
-- **Lunch Breaks**: Configurable break periods
-- **Classroom Capacity**: Room-specific settings
-- **Faculty Availability**: Individual schedules
-- **Subject Duration**: Flexible class lengths
 
 ## 🤝 Contributing
 
@@ -187,3 +184,16 @@ We welcome contributions! Please follow these steps:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🔗 Links
+
+- **Repository**: [GitHub](https://github.com/aadipalsingh/smart-classroom-timetable-scheduler)
+- **Live Demo**: Coming soon...
+- **Documentation**: See `/docs` directory
+
+---
+
+Built with ❤️ using React, TypeScript, and modern web technologies.
