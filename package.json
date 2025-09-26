@@ -1,0 +1,30 @@
+{
+  "name": "timenest-smart-scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TimeNest - Smart Classroom and Timetable Scheduler",
+  "scripts": {
+    "build": "cd client && npm ci && npm run build",
+    "dev": "cd client && npm run dev",
+    "start": "cd client && npm run preview",
+    "install-client": "cd client && npm install",
+    "clean": "rm -rf client/dist"
+  },
+  "workspaces": [
+    "client"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aadipalsingh/smart-classroom-timetable-scheduler.git"
+  },
+  "keywords": [
+    "timetable",
+    "scheduler",
+    "education",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "author": "Aditya Pal",
+  "license": "MIT"
+}

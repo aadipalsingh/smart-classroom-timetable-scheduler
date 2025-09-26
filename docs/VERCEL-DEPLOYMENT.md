@@ -115,18 +115,59 @@ After deployment:
 3. Add your custom domain
 4. Configure DNS settings as instructed
 
-## 🔧 Troubleshooting
+## � Troubleshooting 404 Errors
+
+If you're getting a 404 error, try these fixes:
+
+### Fix 1: Manual Build Settings Override
+In Vercel dashboard, go to **Settings → General → Build & Output Settings** and override:
+
+```bash
+Build Command: npm run build
+Install Command: npm run install-client  
+Output Directory: client/dist
+Root Directory: ./
+```
+
+### Fix 2: Alternative Vercel Configuration
+If the above doesn't work, try updating your `vercel.json`:
+
+```json
+{
+  "buildCommand": "cd client && npm ci && npm run build",
+  "outputDirectory": "client/dist",
+  "installCommand": "cd client && npm ci",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
+```
+
+### Fix 3: Check Build Logs
+1. Go to your Vercel project dashboard
+2. Click on the failed deployment
+3. Check the build logs for specific errors
+4. Common issues:
+   - Dependencies not installing correctly
+   - Build command failing
+   - Output directory not found
+
+## �🔧 Troubleshooting
 
 ### Build Fails
+
 - Check that all dependencies are in `package.json`
 - Ensure build command is correct: `cd client && npm run build`
 - Verify Node.js version compatibility
 
 ### Routing Issues
+
 - The `vercel.json` handles SPA routing automatically
 - All routes fall back to `index.html` for client-side routing
 
 ### Environment Variables
+
 - Add any required environment variables in Vercel dashboard
 - Prefix with `VITE_` for Vite to include them in build
 
