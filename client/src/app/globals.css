@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TimeNest Modern Design System - Purple & Gray Theme
+Modern, professional color palette with excellent contrast and accessibility.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Modern neutral grays */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Card system - Clean white with subtle shadows */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Primary - Modern purple/violet */
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 262 83% 48%;
+
+    /* Secondary - Light purple tint */
+    --secondary: 270 20% 95%;
+    --secondary-foreground: 262 83% 58%;
+
+    /* Muted tones - Modern grays */
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 13% 37%;
+
+    /* Accent - Complementary cyan/blue */
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status colors - Modern and vibrant */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 32 95% 44%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Interactive elements */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 262 83% 58%;
+
+    /* Layout & spacing */
+    --radius: 0.75rem;
+    --radius-lg: 1.25rem;
+
+    /* Sidebar - Modern purple theme */
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 11%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 5% 6%;
+    --sidebar-ring: 262 83% 58%;
+
+    /* Gradients - Modern purple theme */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 83% 68%));
+    --gradient-accent: linear-gradient(135deg, hsl(199 89% 48%), hsl(262 83% 58%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(270 20% 98%));
+
+    /* Shadows - Modern depth with purple tint */
+    --shadow-sm: 0 1px 2px 0 hsl(262 83% 58% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(262 83% 58% / 0.1), 0 2px 4px -2px hsl(262 83% 58% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(262 83% 58% / 0.1), 0 4px 6px -4px hsl(262 83% 58% / 0.1);
+    --shadow-glow: 0 0 20px hsl(262 83% 58% / 0.25);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode - Modern dark purple theme */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 83% 65%;
+    --primary-foreground: 240 10% 3.9%;
+    --primary-hover: 262 83% 70%;
+
+    --secondary: 240 5% 26%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 26%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 199 89% 55%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 32 95% 44%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 26%;
+    --input: 240 5% 26%;
+    --ring: 262 83% 65%;
+
+    /* Dark sidebar */
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 240 10% 3.9%;
+    --sidebar-accent: 240 5% 11%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 5% 6%;
+    --sidebar-ring: 262 83% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  /* Utility classes */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20;
+  }
+
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+
+  .hover\:bg-primary-hover:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .text-success-foreground {
+    color: hsl(var(--success-foreground));
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    transform: scale(0.95);
+    opacity: 0;
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
