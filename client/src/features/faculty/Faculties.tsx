@@ -29,17 +29,17 @@ export default function Faculties() {
       email: "nikhil.tyagi@college.edu",
       phone: "+1 (555) 123-4567",
       department: "Computer Science",
-      subjects: ["Web Technology", "Cyber Security"],
+      subjects: ["Web Technology", "Cyber Security","Web Technology Lab(WTL)"],
       status: "active"
     },
     {
       id: "2",
-      name: "Mr. Ajay Sharma",
-      email: "ajay.sharma@college.edu", 
+      name: "Ms. Navya Sharma",
+      email: "navya.sharma@college.edu",
       phone: "+1 (555) 234-5678",
-      department: "Electronics Engineering",
-      subjects: ["Digital Electronics", "Microprocessors", "Communication Systems"],
-      status: "inactive"
+      department: "Computer Science",
+      subjects: ["Database Management Systems(DBMS)","Database Management Systems Lab(DBMSL)"],
+      status: "active"
     },
     {
       id: "3",
@@ -49,7 +49,43 @@ export default function Faculties() {
       department: "Computer Science",
       subjects: ["Computer Graphics"],
       status: "active"
-    }
+    },
+    {
+      id: "4",
+      name: "Ms. Archana Rajora",
+      email: "archana.rajora@college.edu",
+      phone: "+1 (555) 456-7890",
+      department: "Computer Science",
+      subjects: ["Design and Analysis of Algorithms(DAA)","Design and Analysis of Algorithms Lab(DAAL)"],
+      status: "active"
+    },
+    {
+      id: "5",
+      name: "Ms. Aditi Gautam",
+      email: "aditi.gautam@college.edu",
+      phone: "+1 (555) 123-4567",
+      department: "Computer Science",
+      subjects: ["Machine Learning Techniques(MLT)"],
+      status: "active"
+    },
+    {
+      id: "6",
+      name: "Mr. Ashwani Sharma",
+      email: "ashwani.sharma@college.edu",
+      phone: "+1 (555) 123-4567",
+      department: "Computer Science",
+      subjects: ["Constitution of India(COI)"],
+      status: "active"
+    },
+    {
+      id: "7",
+      name: "Ms. Aparna Nivoria",
+      email: "aparna.nivoria@college.edu",
+      phone: "+1 (555) 123-4567",
+      department: "Computer Science",
+      subjects: ["Internship Assessment/Mini Project"],
+      status: "active"
+    },
   ])
 
   // Form state for adding new faculty
