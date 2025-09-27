@@ -3229,17 +3229,60 @@ class ConflictFreeMultiBatchGenerator {
   private getDifferentiatedFaculty(subject: Subject, batch: BatchConfig, batchIndex: number): string {
     const baseFaculty = subject.faculty || `Faculty-${subject.id}`
     
-    // Strategy 1: If multiple batches, assign different faculty members
+    // If user manually entered a faculty name, check for potential conflicts first
+    if (subject.faculty && subject.faculty.trim() && !subject.faculty.startsWith('Faculty-')) {
+      const manualFaculty = subject.faculty
+      
+      // Check if this faculty is already assigned to another subject in a different batch
+      // This helps detect lecture vs lab conflicts (e.g., WT lecture and WTL lab both assigned to same faculty)
+      const conflictingAssignment = this.checkForCrossBatchFacultyConflict(manualFaculty, subject, batch, batchIndex)
+      
+      if (conflictingAssignment) {
+        console.log(`⚠️ POTENTIAL CONFLICT: ${manualFaculty} manually assigned to both "${conflictingAssignment.subject}" and "${subject.name}"`)
+        console.log(`🔧 Auto-assigning different faculty for ${subject.name} in ${batch.name} to prevent conflicts`)
+        
+        // Auto-assign a different faculty to prevent conflicts
+        const facultyIndex = (batchIndex * this.config.subjects.length + parseInt(subject.id || '0')) % FACULTIES.length
+        const assignedFaculty = FACULTIES[facultyIndex]
+        console.log(`👨‍🏫 Batch ${batch.name}: ${subject.name} → ${assignedFaculty} (Auto - Conflict Prevention)`)
+        return assignedFaculty
+      }
+      
+      console.log(`👨‍🏫 Batch ${batch.name}: ${subject.name} → ${manualFaculty} (Manual)`)
+      return manualFaculty
+    }
+    
+    // Strategy 1: If multiple batches and no manual faculty, assign different faculty members
     if (this.config.batches!.length > 1) {
       // Use batch index to select different faculty from the pool
       const facultyIndex = (batchIndex * this.config.subjects.length + parseInt(subject.id || '0')) % FACULTIES.length
       const assignedFaculty = FACULTIES[facultyIndex]
       
-      console.log(`👨‍🏫 Batch ${batch.name}: ${subject.name} → ${assignedFaculty}`)
+      console.log(`👨‍🏫 Batch ${batch.name}: ${subject.name} → ${assignedFaculty} (Auto)`)
       return assignedFaculty
     }
     
     return baseFaculty
+  }
+
+  private checkForCrossBatchFacultyConflict(faculty: string, currentSubject: Subject, currentBatch: BatchConfig, currentBatchIndex: number): { subject: string, batch: string } | null {
+    // Check all batches except the current one
+    for (let i = 0; i < this.config.batches!.length; i++) {
+      if (i === currentBatchIndex) continue
+      
+      const otherBatch = this.config.batches![i]
+      const otherBatchSubjects = this.config.subjects.filter(subject =>
+        otherBatch.subjects.length === 0 || otherBatch.subjects.includes(subject.id || '')
+      )
+      
+      // Check if the same faculty is manually assigned to any subject in other batches
+      for (const otherSubject of otherBatchSubjects) {
+        if (otherSubject.faculty === faculty && otherSubject.id !== currentSubject.id) {
+          return { subject: otherSubject.name, batch: otherBatch.name }
+        }
+      }
+    }
+    return null
   }
 
   private getBatchSpecificRooms(batch: BatchConfig, batchIndex: number): string[] {

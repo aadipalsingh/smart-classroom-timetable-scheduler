@@ -16,7 +16,9 @@ import {
   ChevronLeft,
   ChevronRight,
   AlertTriangle,
-  CheckCircle2
+  CheckCircle2,
+  Mail,
+  GraduationCap
 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/components/ui/card"
 import { Button } from "@/shared/components/ui/button"
@@ -35,6 +37,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/shared/hooks/use-toast"
 import { GeneratedTimetable, TimetableConfig, MultiBatchResult, BatchTimetableResult } from "@/shared/services/timetableGenerator"
 import { TimetablePDFService, saveTimetableToStorage } from "@/shared/services/pdfService"
+import { distributeTimetablesToFaculties, DepartmentFacultyTimetables } from "@/shared/services/facultyTimetableService"
+import FacultyTimetableView from "../faculty/FacultyTimetableView"
 
 // Weekdays for the timetable display
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
@@ -61,6 +65,8 @@ export default function TimetableResults() {
   const [activeTab, setActiveTab] = useState("0")
   const [selectedBatch, setSelectedBatch] = useState<string>("all")
   const [viewMode, setViewMode] = useState<"overview" | "detailed">("overview")
+  const [facultyTimetables, setFacultyTimetables] = useState<DepartmentFacultyTimetables | null>(null)
+  const [showFacultyView, setShowFacultyView] = useState(false)
   console.log("📋 Active tab:", activeTab, "Selected batch:", selectedBatch);
 
   const { 
@@ -175,6 +181,45 @@ export default function TimetableResults() {
       toast({
         title: "Download Failed",
         description: "Failed to generate PDF. Please try again.",
+        variant: "destructive"
+      })
+    }
+  }
+
+  const handleDistributeToFaculty = () => {
+    console.log("📧 Distributing timetables to faculty...");
+    
+    if (!department || !semester) {
+      toast({
+        title: "Missing Information",
+        description: "Department and semester information required for faculty distribution.",
+        variant: "destructive"
+      })
+      return
+    }
+
+    try {
+      // Distribute either multi-batch result or single batch result
+      const resultToDistribute = isMultiBatch ? multiBatchResult : allTimetables
+      
+      const facultyResult = distributeTimetablesToFaculties(
+        resultToDistribute,
+        department,
+        semester
+      )
+      
+      setFacultyTimetables(facultyResult)
+      setShowFacultyView(true)
+      
+      toast({
+        title: "Faculty Distribution Complete! 📧",
+        description: `Timetables distributed to ${facultyResult.summary.totalFaculties} faculty members with ${facultyResult.summary.conflictsFound} conflicts detected.`,
+      })
+    } catch (error) {
+      console.error("Error distributing to faculty:", error)
+      toast({
+        title: "Distribution Failed",
+        description: "Failed to distribute timetables to faculty. Please try again.",
         variant: "destructive"
       })
     }
@@ -401,6 +446,15 @@ export default function TimetableResults() {
                         <Download className="h-4 w-4 mr-2" />
                         Download PDF
                       </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={handleDistributeToFaculty}
+                        className="text-blue-600 border-blue-200 hover:bg-blue-50"
+                      >
+                        <Mail className="h-4 w-4 mr-2" />
+                        Distribute to Faculty
+                      </Button>
                       <Button onClick={() => handleApprove(option.id)} className="bg-green-600 hover:bg-green-700">
                         <CheckCircle className="h-4 w-4 mr-2" />
                         Approve & Save
@@ -585,6 +639,26 @@ export default function TimetableResults() {
             </p>
           </CardContent>
         </Card>
+      )}
+      
+      {/* Faculty Timetable Distribution View */}
+      {showFacultyView && (
+        <div className="mt-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+              <GraduationCap className="h-6 w-6" />
+              Faculty Timetable Distribution
+            </h2>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowFacultyView(false)}
+              className="text-gray-600 hover:text-gray-800"
+            >
+              Back to Timetables
+            </Button>
+          </div>
+          <FacultyTimetableView departmentTimetables={facultyTimetables} />
+        </div>
       )}
     </div>
   )

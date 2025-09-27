@@ -189,6 +189,30 @@ export default function CreateTimetable() {
         duration: 90, 
         faculty: "Ms. Aditi Gautam", 
         type: "theory" 
+      },
+      { 
+        id: "7", 
+        name: "Web Technology Lab", 
+        classesPerWeek: 2, 
+        duration: 120, 
+        faculty: "Mr. Nikhil Tyagi", 
+        type: "lab" 
+      },
+      { 
+        id: "8", 
+        name: "Design and Analysis of Algorithms Lab", 
+        classesPerWeek: 2, 
+        duration: 120, 
+        faculty: "Ms. Archana Rajora", 
+        type: "lab" 
+      },
+      { 
+        id: "9", 
+        name: "Constitution of India", 
+        classesPerWeek: 2, 
+        duration: 60, 
+        faculty: "Mr. Ashwani Sharma", 
+        type: "theory" 
       }
     ]
     setSubjects(sampleSubjects)
